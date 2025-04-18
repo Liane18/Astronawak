@@ -547,3 +547,144 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>AstroNawak 3000 - Version Stabilisée</title>
+    <style>
+        /* Styles inchangés mais optimisés */
+        :root {
+            --cosmic-purple: #4b0082;
+            --neon-pink: #ff00ff;
+            --alien-green: #00ffcc;
+        }
+        
+        body {
+            background: radial-gradient(circle, #0f0022, #000);
+            font-family: 'Comic Sans MS', cursive;
+            color: white;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        /* ... (conserver le reste des styles existants) ... */
+    </style>
+</head>
+<body>
+    <!-- Structure HTML inchangée -->
+    <header>...</header>
+
+    <div class="container">
+        <section id="horoscope" class="section">
+            <!-- Interface de sélection -->
+            <div style="text-align: center;">
+                <label for="lang">Langue :</label>
+                <select id="lang">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                    <option value="es">Español</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </div>
+
+            <!-- Grille des signes revisitée -->
+            <div class="sign-grid" id="signs-container">
+                <!-- Les signes seront générés dynamiquement -->
+            </div>
+
+            <button id="predict-btn">🚀 VOIR MA DESTINÉE</button>
+            <div id="result"></div>
+        </section>
+
+        <!-- ... autres sections ... -->
+    </div>
+
+    <script>
+        // Nouvelle structure de données
+        const astroData = {
+            signs: [
+                { id: "aries", name: "Bélier", dates: "21 mars - 19 avril", emoji: "🐏" },
+                { id: "taurus", name: "Taureau", dates: "20 avril - 20 mai", emoji: "🐂" },
+                // ... tous les autres signes ...
+            ],
+            
+            messages: {
+                fr: {
+                    aries: "🚀 ALERTE : Ton grille-pain a des vues sur ton conjoint !",
+                    taurus: "🐮 TODAY : Une vache va te parler. Ne bois pas son lait.",
+                    // ... autres messages ...
+                },
+                en: {...},
+                es: {...},
+                it: {...}
+            }
+        };
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            // Génère les cartes de signes
+            const signsContainer = document.getElementById('signs-container');
+            astroData.signs.forEach(sign => {
+                signsContainer.innerHTML += `
+                    <div class="sign-card" data-sign="${sign.id}">
+                        <span style="font-size: 2em">${sign.emoji}</span>
+                        <h3>${sign.name}</h3>
+                        <p>${sign.dates}</p>
+                    </div>
+                `;
+            });
+
+            // Gestion des événements
+            document.querySelectorAll('.sign-card').forEach(card => {
+                card.addEventListener('click', function() {
+                    const signId = this.getAttribute('data-sign');
+                    selectSign(signId);
+                });
+            });
+
+            document.getElementById('predict-btn').addEventListener('click', showMessage);
+        });
+
+        // Fonctions principales
+        function selectSign(signId) {
+            // Désélectionne toutes les cartes
+            document.querySelectorAll('.sign-card').forEach(card => {
+                card.style.background = "rgba(75, 0, 130, 0.3)";
+            });
+            
+            // Sélectionne la carte cliquée
+            const selectedCard = document.querySelector(`.sign-card[data-sign="${signId}"]`);
+            if (selectedCard) {
+                selectedCard.style.background = "rgba(255, 0, 255, 0.5)";
+                // Stocke la sélection
+                document.getElementById('sign').value = signId;
+            }
+        }
+
+        function showMessage() {
+            const lang = document.getElementById('lang').value;
+            const sign = document.getElementById('sign').value;
+            
+            if (!sign) {
+                alert("Choisis un signe astro d'abord !");
+                return;
+            }
+
+            const prediction = astroData.messages[lang]?.[sign] 
+                            || "💥 ERREUR : Les astres sont en pause café";
+            
+            document.getElementById('result').innerHTML = `
+                <h3>Prédiction pour ${document.querySelector(`.sign-card[data-sign="${sign}"] h3`).textContent} :</h3>
+                <p>${prediction}</p>
+                <div style="font-size: 3em">${getRandomEmoji()}</div>
+            `;
+        }
+
+        function getRandomEmoji() {
+            const emojis = ["👽", "🤡", "🪐", "🍕", "🚀"];
+            return emojis[Math.floor(Math.random() * emojis.length)];
+        }
+    </script>
+</body>
+</html>
