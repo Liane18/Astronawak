@@ -750,3 +750,91 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astronawak - Horoscope</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header, footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+
+    nav ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    nav li {
+      display: inline;
+      margin: 0 1em;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 2em;
+    }
+
+    @media (max-width: 600px) {
+      nav li {
+        display: block;
+        margin: 0.5em 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Astronawak</h1>
+    <nav>
+      <ul>
+        <li><a href="#horoscope">Horoscope</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="horoscope">
+      <h2>Horoscope du jour</h2>
+      <div id="horoscope-content">
+        <!-- Le contenu de l'horoscope sera inséré ici -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Astronawak</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const horoscopeContent = document.getElementById('horoscope-content');
+
+      // Exemple de données d'horoscope (à personnaliser ou relier à une API)
+      const horoscope = {
+        signe: 'Bélier',
+        message: 'Aujourd\'hui est une journée propice aux nouvelles rencontres.'
+      };
+
+      horoscopeContent.innerHTML = `
+        <h3>${horoscope.signe}</h3>
+        <p>${horoscope.message}</p>
+      `;
+    });
+  </script>
+</body>
+</html>
