@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Astro Destinée</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f0f8ff; text-align: center; }
+        h1 { color: #6a5acd; }
+        .signs { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-top: 20px; }
+        .sign { border: 2px solid #6a5acd; padding: 10px; border-radius: 5px; cursor: pointer; width: 100px; }
+        .sign:hover { background-color: #e6e6fa; }
+        button { margin-top: 20px; padding: 10px 20px; font-size: 16px; cursor: pointer; background-color: #6a5acd; color: white; border: none; border-radius: 5px; }
+        #result { margin-top: 30px; font-size: 18px; color: #333; }
+    </style>
+</head>
+<body>
+    <h1>Découvre ta destinée stellaire</h1>
+    <label for="lang">Choisis ta langue :</label>
+    <select id="lang">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="it">Italiano</option>
+    </select>
+    <input type="hidden" id="sign">
+    <div class="signs">
+        <div class="sign" onclick="selectSign('aries')">Bélier</div>
+        <div class="sign" onclick="selectSign('taurus')">Taureau</div>
+        <div class="sign" onclick="selectSign('gemini')">Gémeaux</div>
+        <div class="sign" onclick="selectSign('cancer')">Cancer</div>
+        <div class="sign" onclick="selectSign('leo')">Lion</div>
+        <div class="sign" onclick="selectSign('virgo')">Vierge</div>
+        <div class="sign" onclick="selectSign('libra')">Balance</div>
+        <div class="sign" onclick="selectSign('scorpio')">Scorpion</div>
+        <div class="sign" onclick="selectSign('sagittarius')">Sagittaire</div>
+        <div class="sign" onclick="selectSign('capricorn')">Capricorne</div>
+        <div class="sign" onclick="selectSign('aquarius')">Verseau</div>
+        <div class="sign" onclick="selectSign('pisces')">Poissons</div>
+    </div>
+    <button onclick="showMessage()">VOIR MA DESTINÉE</button>
+    <div id="result"></div>
+    <script src="script.js"></script>
+</body>
+</html>
