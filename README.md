@@ -688,3 +688,65 @@
     </script>
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>AstroNawak Fix</title>
+    <style>
+        body {
+            background: #1a0033;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 2em;
+        }
+        button, select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #result {
+            margin-top: 20px;
+            font-size: 24px;
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>AstroNawak</h1>
+    
+    <select id="lang">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+    </select>
+    
+    <select id="sign">
+        <option value="aries">Bélier</option>
+        <option value="taurus">Taureau</option>
+    </select>
+    
+    <button onclick="generateHoroscope()">Générer</button>
+    
+    <div id="result"></div>
+
+    <script>
+        const predictions = {
+            fr: {
+                aries: "🚀 Ton grille-pain va te parler aujourd'hui !",
+                taurus: "🐮 Une vache rose apparaîtra dans ton salon."
+            },
+            en: {
+                aries: "🚀 Your toaster will write you a poem!",
+                taurus: "🐮 A pink cow will ask you to dance."
+            }
+        };
+
+        function generateHoroscope() {
+            const lang = document.getElementById("lang").value;
+            const sign = document.getElementById("sign").value;
+            document.getElementById("result").textContent = predictions[lang][sign];
+        }
+    </script>
+</body>
+</html>
